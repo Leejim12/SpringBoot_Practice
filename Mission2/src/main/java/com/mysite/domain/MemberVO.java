@@ -4,16 +4,20 @@ import java.util.Date;
 import java.util.HashMap;
 
 public class MemberVO {
-	private int id;
+	private String id;
 	private String pass;
 	private String name;
-	private Date regidate;
+	private String regidate;
 	
 	
-	public int getId() {
+	@Override
+	public String toString() {
+		return "MemberVO [id=" + id + ", pass=" + pass + ", name=" + name + ", regidate=" + regidate + "]";
+	}
+	public String getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getPass() {
@@ -28,23 +32,10 @@ public class MemberVO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Date getRegidate() {
+	public String getRegidate() {
 		return regidate;
 	}
-	public void setRegidate(Date regidate) {
+	public void setRegidate(String regidate) {
 		this.regidate = regidate;
 	}
-	
-	
-//	private HashMap<Member,String[]> memberMap;
-//	
-//	
-//	public HashMap<Member, String[]> getMemberMap() {
-//		return memberMap;
-//	}
-//
-//	public void setMemberMap(HashMap<Member, String[]> memberMap) {
-//		this.memberMap = memberMap;
-//		
-//	}
 }
