@@ -6,6 +6,10 @@ import java.util.List;
 import com.mysite.connector.ConnectH2;
 
 public class MemberDAO extends ConnectH2 {
+	String driver = "org.h2.Driver";
+	String url = "jdbc:h2:tcp://localhost/~/test";  
+	String id = "sa";
+	String pwd = "";
     // 명시한 데이터베이스로의 연결이 완료된 MemberDAO 객체를 생성합니다.
     public MemberDAO(String drv, String url, String id, String pw) {
         super(drv, url, id, pw);
@@ -45,7 +49,7 @@ public class MemberDAO extends ConnectH2 {
         try {
             // 쿼리 실행
             psmt = con.prepareStatement(query); // 동적 쿼리문 준비 // con : 부모로부터 상속받은것.
-            psmt.setInt(1, uid);    // 쿼리문의 첫 번째 인파라미터에 값 설정
+            psmt.setString(1, uid);    // 쿼리문의 첫 번째 인파라미터에 값 설정
             psmt.setString(2, upass);  // 쿼리문의 두 번째 인파라미터에 값 설정
             rs = psmt.executeQuery();  // 쿼리문 실행
 
@@ -88,7 +92,7 @@ public class MemberDAO extends ConnectH2 {
     public int updateMember(MemberVO vo) {
     	int result = 0;
     	try {
-    		String query="UPDATE MEMBER SET"
+    		String query="UPDATE MEMBER SET "
     				+ "NAME = ?,"
     				+ "PASS = ?"
     				+ "WHERE ID = ?";
@@ -109,7 +113,7 @@ public class MemberDAO extends ConnectH2 {
     	int result = 0;
     	try {
     		String query="DELETE FROM MEMBER WHERE"
-    				+ "ID = ?";
+    				+ " ID = ?";
     		psmt = con.prepareStatement(query);
     		psmt.setString(1, String.valueOf(vo.getId()));
     		result = psmt.executeUpdate();
@@ -121,8 +125,4 @@ public class MemberDAO extends ConnectH2 {
     	return result;
     }
 
-	public MemberVO getMemberVO(String id, String pass) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

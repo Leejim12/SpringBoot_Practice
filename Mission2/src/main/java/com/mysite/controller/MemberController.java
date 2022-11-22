@@ -30,7 +30,7 @@ public class MemberController {
 	}
 	
 	@GetMapping("/Member/{id}")
-	public MemberVO getMember(@PathVariable Integer id) {
+	public MemberVO getMember(@PathVariable String id) {
 		return memberService.getMember(id);	
 	}
 	
@@ -45,7 +45,7 @@ public class MemberController {
 	}
 	
 	@DeleteMapping("/Member/{id}")
-	public MemberVO removeMember(@PathVariable Integer id) {
+	public MemberVO removeMember(@PathVariable String id) {
 		return memberService.removeMember(id);
 	}
 	

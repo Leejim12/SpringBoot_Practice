@@ -12,7 +12,7 @@ public class MemberService {
 	private MemberDAO memberDAO;
 	
 	public MemberService() {
-		memberDAO  = new MemberDAO("org.h2.Driver", "jdbc:h2:tcp://localhost/~/mvcboard", "sa", "");
+		memberDAO  = new MemberDAO("org.h2.Driver", "jdbc:h2:tcp://localhost/~/test", "sa", "");
 	}
 	
 	public List<MemberVO> getMembers(){
@@ -20,10 +20,10 @@ public class MemberService {
 	}
 	
 	//id 찾기 -> get 
-	public MemberVO getMember(Integer id){
+	public MemberVO getMember(String id){
 		List<MemberVO> memberList = memberDAO.getMemberVO();
 		for(MemberVO m : memberList) {
-			if(m.getId()==id)return memberDAO.getMemberVO(m.getId(), m.getPass());
+			if(m.getId().equals(id))return memberDAO.getMemberVO(m.getId(), m.getPass());
 		}
 		return null;
 	}
@@ -50,10 +50,10 @@ public class MemberService {
 		return memberVO;
 	}
 	
-	public MemberVO removeMember(Integer id){
+	public MemberVO removeMember(String id){
 		List<MemberVO> memberList = memberDAO.getMemberVO();
 		for(MemberVO m : memberList) {
-			if(String.valueOf(m.getId())==String.valueOf(id)) {
+			if(m.getId().equals(id)) {
 				memberList.remove(m);
 				memberDAO.DeleteMember(m);
 				return m;
