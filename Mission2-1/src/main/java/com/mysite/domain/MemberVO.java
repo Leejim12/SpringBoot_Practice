@@ -1,8 +1,5 @@
 package com.mysite.domain;
 
-import java.util.Date;
-import java.util.HashMap;
-
 public class MemberVO {
 	private String id;
 	private String pass;

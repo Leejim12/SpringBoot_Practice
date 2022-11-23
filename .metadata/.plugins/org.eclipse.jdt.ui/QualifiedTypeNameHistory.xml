@@ -13,4 +13,6 @@
     <fullyQualifiedTypeName name="java.lang.annotation.RetentionPolicy"/>
     <fullyQualifiedTypeName name="com.mysite.domain.MemberDAO"/>
     <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="com.mysite.connector.ConnectH2"/>
+    <fullyQualifiedTypeName name="com.mysite.domain.LogVO"/>
 </qualifiedTypeNameHistroy>

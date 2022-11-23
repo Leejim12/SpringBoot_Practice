@@ -34,17 +34,4 @@ public class MemberVO {
 	public void setRegidate(Date regidate) {
 		this.regidate = regidate;
 	}
-	
-	
-//	private HashMap<Member,String[]> memberMap;
-//	
-//	
-//	public HashMap<Member, String[]> getMemberMap() {
-//		return memberMap;
-//	}
-//
-//	public void setMemberMap(HashMap<Member, String[]> memberMap) {
-//		this.memberMap = memberMap;
-//		
-//	}
 }

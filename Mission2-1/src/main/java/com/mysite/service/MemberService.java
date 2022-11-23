@@ -1,34 +1,56 @@
 package com.mysite.service;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.mysite.domain.LogDAO;
+import com.mysite.domain.LogDaoH2Impl;
+import com.mysite.domain.LogVO;
+import com.mysite.domain.MemberDAO;
 import com.mysite.domain.MemberDaoH2Impl;
 import com.mysite.domain.MemberVO;
 
 public class MemberService {
 
-	private MemberDaoH2Impl memberDAO;
+	private MemberDAO memberDAO;
+	private LogDAO logDAO;
 	
 	public MemberService() {
 		memberDAO  = new MemberDaoH2Impl("org.h2.Driver", "jdbc:h2:tcp://localhost/~/test", "sa", "");
+		logDAO = new LogDaoH2Impl("org.h2.Driver", "jdbc:h2:tcp://localhost/~/test", "sa", "");
 	}
 	
 	public List<MemberVO> getMembers(){
+		LogVO TempLog = new LogVO();
+		String log = "Search All data";
+		TempLog.setLogContent(log);
+		logDAO.InsertLog(TempLog);
+		
 		return memberDAO.getMemberVO();
 	}
 	
 	//id 찾기 -> get 
 	public MemberVO getMember(String id){
+		LogVO TempLog = new LogVO();
+		String log = "Search specific data";
+		TempLog.setLogContent(log);
+		logDAO.InsertLog(TempLog);
+		
 		List<MemberVO> memberList = memberDAO.getMemberVO();
 		for(MemberVO m : memberList) {
-			if(m.getId().equals(id))return memberDAO.getMemberVO(m.getId(), m.getPass());
+			if(m.getId().equals(id)) {
+				return memberDAO.getMemberVO(m.getId(), m.getPass());
+			}
 		}
 		return null;
 	}
 	
 	public MemberVO addMember(MemberVO memberVO){
+		LogVO TempLog = new LogVO();
+		String log = "Add data";
+		TempLog.setLogContent(log);
+		logDAO.InsertLog(TempLog);
+		
 		List<MemberVO> memberList = memberDAO.getMemberVO();
 		memberVO.setRegidate(String.valueOf(new Date()));
 		memberVO.setId(String.valueOf(memberList.size()+1));
@@ -39,6 +61,11 @@ public class MemberService {
 	
 	
 	public MemberVO updateMembers(MemberVO memberVO){
+		LogVO TempLog = new LogVO();
+		String log = "Update data";
+		TempLog.setLogContent(log);
+		logDAO.InsertLog(TempLog);
+		
 		List<MemberVO> memberList = memberDAO.getMemberVO();
 		for(int i = 1;i<=memberList.size()-1;i++) {
 			if(memberList.get(i).getId() == memberVO.getId()) {
@@ -51,6 +78,11 @@ public class MemberService {
 	}
 	
 	public MemberVO removeMember(String id){
+		LogVO TempLog = new LogVO();
+		String log = "Remove data";
+		TempLog.setLogContent(log);
+		logDAO.InsertLog(TempLog);
+		
 		List<MemberVO> memberList = memberDAO.getMemberVO();
 		for(MemberVO m : memberList) {
 			if(m.getId().equals(id)) {

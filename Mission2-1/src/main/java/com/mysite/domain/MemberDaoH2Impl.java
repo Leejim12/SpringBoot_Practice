@@ -6,19 +6,18 @@ import java.util.List;
 import com.mysite.connector.ConnectH2;
 
 public class MemberDaoH2Impl extends ConnectH2 implements MemberDAO{
-	String driver = "org.h2.Driver";
+	String drv = "org.h2.Driver";
 	String url = "jdbc:h2:tcp://localhost/~/test";  
 	String id = "sa";
 	String pwd = "";
     // 명시한 데이터베이스로의 연결이 완료된 MemberDAO 객체를 생성합니다.
-    public MemberDaoH2Impl(String drv, String url, String id, String pw) {
-        super(drv, url, id, pw);
+    public MemberDaoH2Impl(String drv, String url, String id, String pwd) {
+        super(drv, url, id, pwd);
     }
 
     public List<MemberVO> getMemberVO() {
     	List<MemberVO> ms = new ArrayList<MemberVO>();
     	String query = "SELECT * FROM member";
-    	
         try {
             // 쿼리 실행
             psmt = con.prepareStatement(query); // 동적 쿼리문 준비 // con : 부모로부터 상속받은것.

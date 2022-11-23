@@ -124,5 +124,4 @@ public class MemberDAO extends ConnectH2 {
     	}
     	return result;
     }
-
 }
