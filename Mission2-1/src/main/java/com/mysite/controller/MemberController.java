@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mysite.domain.LogVO;
 import com.mysite.domain.MemberVO;
 import com.mysite.service.MemberService;
 
@@ -26,6 +27,10 @@ public class MemberController {
 	@GetMapping("/Member")
 	public List<MemberVO> getMembers(){
 		return memberService.getMembers();
+	}
+	@GetMapping("/Log")
+	public List<LogVO> getLogVO(){
+		return memberService.getLogs();
 	}
 	
 	@GetMapping("/Member/{id}")

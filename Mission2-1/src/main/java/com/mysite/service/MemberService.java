@@ -4,10 +4,10 @@ import java.util.Date;
 import java.util.List;
 
 import com.mysite.domain.LogDAO;
-import com.mysite.domain.LogDaoH2Impl;
+import com.mysite.domain.LogDaoH2;
 import com.mysite.domain.LogVO;
 import com.mysite.domain.MemberDAO;
-import com.mysite.domain.MemberDaoH2Impl;
+import com.mysite.domain.MemberDaoH2;
 import com.mysite.domain.MemberVO;
 
 public class MemberService {
@@ -16,24 +16,29 @@ public class MemberService {
 	private LogDAO logDAO;
 	
 	public MemberService() {
-		memberDAO  = new MemberDaoH2Impl("org.h2.Driver", "jdbc:h2:tcp://localhost/~/test", "sa", "");
-		logDAO = new LogDaoH2Impl("org.h2.Driver", "jdbc:h2:tcp://localhost/~/test", "sa", "");
+		memberDAO  = new MemberDaoH2("org.h2.Driver", "jdbc:h2:tcp://localhost/~/test", "sa", "");
+		logDAO = new LogDaoH2("org.h2.Driver", "jdbc:h2:tcp://localhost/~/test", "sa", "");
 	}
 	
 	public List<MemberVO> getMembers(){
 		LogVO TempLog = new LogVO();
 		String log = "Search All data";
-		TempLog.setLogContent(log);
+		TempLog.setContent(log);
+		System.out.println(TempLog.getContent());
 		logDAO.InsertLog(TempLog);
 		
 		return memberDAO.getMemberVO();
 	}
 	
+	public List<LogVO> getLogs(){
+		return logDAO.getLogVO();
+	}
+	
 	//id 찾기 -> get 
 	public MemberVO getMember(String id){
 		LogVO TempLog = new LogVO();
-		String log = "Search specific data";
-		TempLog.setLogContent(log);
+		String log = "Search specific data : " + id ;
+		TempLog.setContent(log);
 		logDAO.InsertLog(TempLog);
 		
 		List<MemberVO> memberList = memberDAO.getMemberVO();
@@ -47,8 +52,8 @@ public class MemberService {
 	
 	public MemberVO addMember(MemberVO memberVO){
 		LogVO TempLog = new LogVO();
-		String log = "Add data";
-		TempLog.setLogContent(log);
+		String log = "Add data : " + memberVO.getId();
+		TempLog.setContent(log);
 		logDAO.InsertLog(TempLog);
 		
 		List<MemberVO> memberList = memberDAO.getMemberVO();
@@ -62,8 +67,8 @@ public class MemberService {
 	
 	public MemberVO updateMembers(MemberVO memberVO){
 		LogVO TempLog = new LogVO();
-		String log = "Update data";
-		TempLog.setLogContent(log);
+		String log = "Update data : " + memberVO.getId();
+		TempLog.setContent(log);
 		logDAO.InsertLog(TempLog);
 		
 		List<MemberVO> memberList = memberDAO.getMemberVO();
@@ -79,8 +84,8 @@ public class MemberService {
 	
 	public MemberVO removeMember(String id){
 		LogVO TempLog = new LogVO();
-		String log = "Remove data";
-		TempLog.setLogContent(log);
+		String log = "Remove data : " + id;
+		TempLog.setContent(log);
 		logDAO.InsertLog(TempLog);
 		
 		List<MemberVO> memberList = memberDAO.getMemberVO();

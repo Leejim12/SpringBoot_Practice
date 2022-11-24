@@ -3,7 +3,7 @@ package com.mysite.domain;
 public class LogVO {
 	String idx;
 	String time;
-	String LogContent;
+	String Content;
 	public LogVO() {
 		super();
 	}
@@ -19,16 +19,16 @@ public class LogVO {
 	public void setTime(String time) {
 		this.time = time;
 	}
-	public String getLogContent() {
-		return LogContent;
+	public String getContent() {
+		return Content;
 	}
 	@Override
 	public String toString() {
-		return "LogVO [idx=" + idx + ", time=" + time + ", LogContent=" + LogContent + "]";
+		return "LogVO [idx=" + idx + ", time=" + time + ", Content=" + Content + "]";
 	}
 
-	public void setLogContent(String logContent) {
-		LogContent = logContent;
+	public void setContent(String Content) {
+		this.Content = Content;
 	}
 	
 

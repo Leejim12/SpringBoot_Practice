@@ -1,5 +1,5 @@
 package com.rubypaper.controller;
-
+// 미션1
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -22,8 +22,6 @@ public class MemberController {
 	private List<MemberVO> memberList;
 	
 	public MemberController() {
-		System.out.println();
-		
 		memberList = new ArrayList<MemberVO>();
 		for (int i = 1; i <= 20; i++) {
 			MemberVO member = new MemberVO();
