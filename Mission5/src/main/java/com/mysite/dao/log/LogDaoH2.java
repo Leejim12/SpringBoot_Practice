@@ -20,13 +20,11 @@ public class LogDaoH2 implements LogDao{
 		}
 	}
 	
-	
-	
 	@Override
 	public void addLog(String method, String sqlString, boolean success) {
 		PreparedStatement psmt = null;
 		try {
-			psmt = con.prepareStatement("insert into dblog(method,sqlString,success values (?,?,?)");
+			psmt = con.prepareStatement("insert into dblog(method,sqlString,success) values (?,?,?)");
 			psmt.setString(1, method);
 			psmt.setString(2, sqlString);
 			psmt.setBoolean(3, success);

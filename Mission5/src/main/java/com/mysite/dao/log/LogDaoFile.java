@@ -5,7 +5,7 @@ import java.io.FileWriter;
 
 import org.springframework.stereotype.Repository;
 
-@Repository
+//@Repository
 public class LogDaoFile implements LogDao{
 
 	@Override

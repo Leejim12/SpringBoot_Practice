@@ -23,7 +23,7 @@ public class MemberDaoH2 implements MemberInterface {
 	public MemberDaoH2() {
 		try {
 			Class.forName("org.h2.Driver");
-			con = DriverManager.getConnection("jdbc:h2:tcp://localhost/~/springboot", "sa", "");
+			con = DriverManager.getConnection("jdbc:h2:tcp://localhost/~/test", "sa", "");
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -32,7 +32,7 @@ public class MemberDaoH2 implements MemberInterface {
 	@Override
 	public Map<String, Object> getMembers() {
 		Statement st = null; ResultSet rs = null;
-		String sqlString = "select * from meber";
+		String sqlString = "select * from member";
 		try {
 			List<MemberVO> list = new ArrayList<>();
 			st = con.createStatement();
