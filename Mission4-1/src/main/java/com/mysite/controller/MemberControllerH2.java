@@ -23,7 +23,6 @@ public class MemberControllerH2 {
 
 	private static final Logger Log = LoggerFactory.getLogger(MemberControllerH2.class);
 	public MemberControllerH2(MemberService memberService) {
-		
 		System.out.println("MemberController() 생성자 호출");
 		Log.info("MemberController() 생성자 호출");
 		this.memberService = memberService;

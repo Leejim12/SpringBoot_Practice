@@ -1,6 +1,5 @@
 package edu.pnu;
-// 데이터 검색.
-import java.util.Date;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -13,11 +12,16 @@ public class JPAClient2 {
 	public static void main(String[] args) {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("Chapter04");
 		EntityManager em = emf.createEntityManager();
+		EntityTransaction tx = em.getTransaction();
 		try {
 			// 글 상세 조회
-				Board searchBoard = em.find(Board.class, 1L); // 조회 메소드
-				System.out.println(searchBoard);
-				System.out.println("---->" + searchBoard.toString());
+				// 트랜잭션 시작
+				tx.begin();
+				
+				// 조회 쿼리
+				String jpql = "select b from Board b order by b.seq desc";
+				List<Board> boardList=
+						em.createQuery(jpql,Board.class).getResultList();
 			}catch(Exception e) {
 				e.printStackTrace();
 			}finally {
