@@ -15,7 +15,6 @@ class Chapter05ApplicationTests {
 	@Autowired
 	private BoardRepository boardRepo;
 
-	@Test
 	void contextLoads() {
 		boardRepo.save(new Board(
 				20L,
@@ -28,7 +27,6 @@ class Chapter05ApplicationTests {
 				));
 	}
 	
-//	@Test
 //	void mission() {
 //		for(int i=1;i<=20;i++) {
 //		boardRepo.save(new Board(
@@ -45,7 +43,6 @@ class Chapter05ApplicationTests {
 //	}
 //	
 /////////////// 2. 조회 기능 /////////////
-//	@Test
 //	public void testGetBoard() {
 //		Board board = boardRepo.findById(1L).get();
 //		System.out.println(board.toString());
@@ -53,7 +50,6 @@ class Chapter05ApplicationTests {
 //	}
 //	
 /////////////// 3. 수정 기능 /////////////	
-//	@Test
 //	public void testUpdateBoard() {
 //		System.out.println("=== 1번 게시글 조회 ===");
 //		Board board = boardRepo.findById(1L).get();
@@ -63,7 +59,6 @@ class Chapter05ApplicationTests {
 //		boardRepo.save(board);
 //	}
 /////////////// 4. 삭제 기능 /////////////	
-//	@Test
 //	public void testDeleteBoard() {
 //		boardRepo.deleteById(1L);
 //	}
